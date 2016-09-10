@@ -110,19 +110,7 @@ namespace Dependencies
         /// </summary>
         public bool HasDependents(string s)
         {
-            if(s != null)
-            {
-                DependencyNode node;
-                if(nodes.TryGetValue(s, out node))
-                {
-                    return node.HasDependents();
-                }
-            }
-            else
-            {
-                throw new ArgumentNullException();
-            }
-            return false;
+            return GetDependents(s).Count() > 0;
         }
 
         /// <summary>
@@ -131,19 +119,7 @@ namespace Dependencies
         /// </summary>
         public bool HasDependees(string s)
         {
-            if (s != null)
-            {
-                DependencyNode node;
-                if (nodes.TryGetValue(s, out node))
-                {
-                    return node.HasDependees();
-                }
-            }
-            else
-            {
-                throw new ArgumentNullException();
-            }
-            return false;
+            return GetDependees(s).Count() > 0;
         }
 
         /// <summary>
